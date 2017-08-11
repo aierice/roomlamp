@@ -76,17 +76,10 @@ void serval() {
           if (currentLine.length() == 0) {
             // HTTP headers always start with a response code (e.g. HTTP/1.1 200 OK)
             // and a content-type so the client knows what's coming, then a blank line:
-            client.println("HTTP/1.1 200 OK");
-            client.println("Content-type:text/html");
-            client.println();
 
-            client.print("<meta charset=utf-8>");
-            client.print("<form method=\"get\" action=\" /po\">");
-            client.print("<p>入力：<input type=\"text\" name=\"name\" size=\"40\"></p>");
-//            client.print("<p>入力(number)：<input type=\"number\" name=\"num\" size=\"40\" min=\"-150\" max=\"150\" step=\"10\"></p>");
-            client.print("<p><input type=\"submit\" value=\"送信\"><input type=\"reset\" value=\"リセット\"></p>");
-            client.print("</form>");
-            client.println();
+            #include "html.h"
+            client.println(html);
+
             // break out of the while loop:
             break;
           } else {    // if you got a newline, then clear currentLine:
