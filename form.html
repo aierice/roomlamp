@@ -1,5 +1,30 @@
+<style>
+  body {
+    background-color: black;
+  }
+  p {
+    color: white;
+  }
+
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    margin-left: 2px;
+    /*font-size: 16px;*/
+    border: none;
+    border-radius: 4px 4px 4px 4px;
+    /*border-color: #77d27a;*/
+    cursor: pointer;
+  }
+</style>
 <meta charset=utf-8>
 <form method="get" action=" /po">
-  <p>入力：<input type="text" name="name" size="40"></p>
-  <p><input type="submit" value="送信"><input type="reset" value="リセット"></p>
+  <div>
+    <p>入力： <button name="onoff" value="on">ON</button><button name="onoff" value="off">OFF</button></p>
+  </div>
+  <div>
+    <input type="text" name="name" size="40">
+    <p><input type="submit" value="送信"><input type="reset" value="リセット"></p>
+  </div>
 </form>
