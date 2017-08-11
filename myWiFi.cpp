@@ -93,6 +93,8 @@ void serval() {
             //ここに条件式を書けば毎回読み込むことはないので早いし、列の途中で割り込みしてくることがないので美しい。行の途中の割り込みまでの対策はできていない
             char strK[] = "GET /po?name=K";
             char strL[] = "GET /po?name=L";
+            char str_ON[] = "GET /po?name=ON";
+            char str_OFF[] = "GET /po?name=OFF";
             char strN[] = "GET /po?name=N";//フォームに数字入力があったら
             char strcL[100];
             currentLine.toCharArray(strcL, 100);
@@ -101,6 +103,12 @@ void serval() {
             }
             if (strstr(strcL, strL)) {
               run_L();
+            }
+            if (strstr(strcL, str_ON)) {
+              run_ON();
+            }
+            if (strstr(strcL, str_OFF)) {
+              run_OFF();
             }
             if (strstr(strcL, strN)) {
               // N以下の抽出する数字をintに変換,numに代入
@@ -273,6 +281,21 @@ void run_L() {
   time_get();
   do_motion(myback);
 }
+
+void run_ON() {
+  time_get();
+  appendFile(SD,"\time_get.txt"," ON");
+  origin[2] = 30;
+  do_motion(origin);
+}
+
+void run_OFF() {
+  time_get();
+  appendFile(SD,"\time_get.txt"," OFF");
+  origin[2] = -130;
+  do_motion(origin);
+}
+
 
 void run_N(int16_t num){
   origin[2] = num*10;
